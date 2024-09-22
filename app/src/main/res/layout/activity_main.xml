@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:background="@color/branco"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@color/fundo"
             android:padding="8dp"
-            android:text="Quiz App"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textSize="24dp" />
 
@@ -46,17 +46,17 @@
             android:text="Digite seu nome:" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/edit_nome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:ems="10"
             android:hint="Digite seu nome"
             android:inputType="text" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_iniciar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="INICIAR QUIZ" />
+            android:layout_height="48dp"
+            android:text="Iniciar Quiz" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
