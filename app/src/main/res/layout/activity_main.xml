@@ -57,6 +57,6 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="INICIAR QUIZ" />
+            android:text="Iniciar Quiz" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
