@@ -22,21 +22,21 @@ class DadosFicticios {
 
             val pergunta1 = Pergunta(
                 1,"1) Qual foi a duração do primeiro vídeo do Youtube?"," 3 minutos",
-                "1 minuto","18 segundos", repostaCerta = 3
+                "1 minuto","18 segundos",  3
             )
 
             val pergunta2 = Pergunta(
-                1,"2) Em média, quantas pesquisas totalmente novas são feitas no Google todo dia?",
-                " 450 milhões", "1 Bilhão","10 bilhões", repostaCerta = 1
+                2,"2) Em média, quantas pesquisas totalmente novas são feitas no Google todo dia?",
+                " 450 milhões", "1 Bilhão","10 bilhões",  1
             )
 
             val pergunta3 = Pergunta(
-                1,"3) Quantos Bits cabem em um Byte?",
-                " MySpace", "ClassMate","Orkut", repostaCerta = 2
+                3,"3) Quantos Bits cabem em um Byte?",
+                " MySpace", "ClassMate","Orkut",  2
             )
             val pergunta4 = Pergunta(
-                1,"4) Qual foi a primeira rede social da história da internet?",
-                " 1 bit", "4 bits","8 bits", repostaCerta = 3
+                4,"4) Qual foi a primeira rede social da história da internet?",
+                " 1 bit", "4 bits","8 bits", 3
             )
 
             return arrayOf(

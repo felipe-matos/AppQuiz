@@ -1,5 +1,6 @@
 package com.example.appquiz
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore.Audio.Radio
 import android.widget.Button
@@ -51,15 +52,21 @@ class PerguntasActivity : AppCompatActivity() {
         btnConfirmar.setOnClickListener{
 
             if(validarRepostasPerguntasAtual()){ //Exibe a próxima
+
+                verificarRespostaCerta()
                 indicePerguntaAtual++
 
                 //Verifico se já foi preenchido tudo
                 val totalItensLista = listaPerguntas.size
-                if(indicePerguntaAtual >= totalItensLista){
-                    verificarRespostaCerta()
+                if(indicePerguntaAtual <= totalItensLista){
+
                     exibirPerguntaAtual()
                 } else { //terminou as perguntas
 
+                    val intent = Intent(this,DetalhesActivity::class.java)
+                    intent.putExtra("total_respostas_corretas",totalRespostasCorretas)
+                    startActivity(intent)
+                    finish()
                 }
 
                 //textContadorPerguntas.text = "Contador : $indicePerguntaAtual"
@@ -79,14 +86,17 @@ class PerguntasActivity : AppCompatActivity() {
              1
         } else if (radioPergunta02.isChecked){
              2
-        }else{
+        }else if (radioPergunta03.isChecked){
              3
+        }else {
+            0
         }
 
         if(respostaSelecionada == respostaCerta){
             totalRespostasCorretas++
         }
 
+        radioGroupPerguntas.clearCheck()
 
     }
 
@@ -97,7 +107,7 @@ class PerguntasActivity : AppCompatActivity() {
         val resposta03 = radioPergunta03.isChecked
 
         if(resposta01 || resposta02 || resposta03){
-            radioGroupPerguntas.clearCheck()
+
             return true
         }
 
@@ -117,7 +127,9 @@ class PerguntasActivity : AppCompatActivity() {
         radioPergunta03.text = perguntaAtual.resposta03
 
         val totalPerguntas = listaPerguntas.size
-        textContadorPerguntas.text = "$indicePerguntaAtual pergunta de $totalPerguntas"
+       // textContadorPerguntas.text = "$indicePerguntaAtual pergunta de $totalPerguntas"
+
+        textContadorPerguntas.text = "total respostas: $totalRespostasCorretas indice: $indicePerguntaAtual"
     }
 
     private fun inicializar() {
