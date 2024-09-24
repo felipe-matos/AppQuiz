@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
@@ -24,11 +25,16 @@ class MainActivity : AppCompatActivity() {
 
             val nome = editNome.text.toString()
 
-            val intent = Intent(this,PerguntasActivity::class.java)
+          if(nome.isNotEmpty()){
+              val intent = Intent(this,PerguntasActivity::class.java)
 
-            intent.putExtra("nome_usuario",nome)
+              intent.putExtra("nome_usuario",nome)
 
-            startActivity(intent)
+              startActivity(intent)
+
+          }else{
+              Toast.makeText(this, "Preencha o nome ", Toast.LENGTH_SHORT).show()
+          }
 
         }
 
