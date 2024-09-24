@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -46,22 +47,45 @@ class PerguntasActivity : AppCompatActivity() {
 
         exibirPerguntaAtual()
         btnConfirmar.setOnClickListener{
-            indicePerguntaAtual++
-            exibirPerguntaAtual()
+
+            if(validarRepostasPerguntasAtual()){ //Exibe a próxima
+                indicePerguntaAtual++
+                exibirPerguntaAtual()
+            }
+
 
         }
 
+    }
 
+    private fun validarRepostasPerguntasAtual() : Boolean {
+
+        val resposta01 = radioPergunta01.isChecked
+        val resposta02 = radioPergunta02.isChecked
+        val resposta03 = radioPergunta03.isChecked
+
+        if(resposta01 || resposta02 || resposta03){
+            radioGroupPerguntas.clearCheck()
+            return true
+        }
+
+        Toast.makeText(this, "Preencha a reposta para avançar", Toast.LENGTH_SHORT).show()
+        return false
+        //textContadorPerguntas.text = "R01 : $resposta01 , R02: $resposta02 , R03 $resposta03"
 
     }
 
     private fun exibirPerguntaAtual() {
 
         val perguntaAtual = listaPerguntas[indicePerguntaAtual - 1 ]
+
         textPergunta.text = perguntaAtual.titulo
         radioPergunta01.text = perguntaAtual.resposta01
         radioPergunta02.text = perguntaAtual.resposta02
         radioPergunta03.text = perguntaAtual.resposta03
+
+        val totalPerguntas = listaPerguntas.size
+        textContadorPerguntas.text = "$indicePerguntaAtual pergunta de $totalPerguntas"
     }
 
     private fun inicializar() {
