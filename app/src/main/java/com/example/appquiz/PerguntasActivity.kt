@@ -30,6 +30,8 @@ class PerguntasActivity : AppCompatActivity() {
 
     private var indicePerguntaAtual = 1
 
+    private var totalRespostasCorretas = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -50,11 +52,41 @@ class PerguntasActivity : AppCompatActivity() {
 
             if(validarRepostasPerguntasAtual()){ //Exibe a próxima
                 indicePerguntaAtual++
-                exibirPerguntaAtual()
+
+                //Verifico se já foi preenchido tudo
+                val totalItensLista = listaPerguntas.size
+                if(indicePerguntaAtual >= totalItensLista){
+                    verificarRespostaCerta()
+                    exibirPerguntaAtual()
+                } else { //terminou as perguntas
+
+                }
+
+                //textContadorPerguntas.text = "Contador : $indicePerguntaAtual"
+
             }
 
-
         }
+
+    }
+
+    private fun verificarRespostaCerta() {
+
+        val pergunta  = listaPerguntas[indicePerguntaAtual -1]
+        val respostaCerta = pergunta.repostaCerta
+
+        var respostaSelecionada = if( radioPergunta01.isChecked){
+             1
+        } else if (radioPergunta02.isChecked){
+             2
+        }else{
+             3
+        }
+
+        if(respostaSelecionada == respostaCerta){
+            totalRespostasCorretas++
+        }
+
 
     }
 
